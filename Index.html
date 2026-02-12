@@ -2,31 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MSN Nudge - The Great Meme Reset 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSN Nudge - $NUDGE - The Great Meme Reset 2026</title>
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <style>
-        body { background-color: #008080; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: "Pixelated MS Sans Serif", Arial; }
-       .window { width: 400px; }
-       .inner-content { text-align: center; padding: 20px; }
-       .logo-placeholder { background: #fff; border: 2px inset #ccc; width: 100px; height: 100px; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; }
+        body { background-color: #008080; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; font-family: "Pixelated MS Sans Serif", Arial, sans-serif; overflow: hidden; }
+       .window { width: 380px; box-shadow: 4px 4px 0px #000; }
+       .inner-content { text-align: center; padding: 15px; background: #c0c0c0; }
+       .logo-box { background: #fff; border: 2px inset #fff; width: 120px; height: 120px; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+       .logo-box img { width: 100%; height: auto; image-rendering: pixelated; }
+        p { margin: 10px 0; font-size: 12px; line-height: 1.4; }
+       .nudge-text { font-weight: bold; color: #000080; text-transform: uppercase; letter-spacing: 1px; }
         
-        /* Die Nudge-Animation */
-        @keyframes nudge {
+        /* The Nudge Shake Animation */
+        @keyframes nudge-shake {
             0% { transform: translate(0, 0); }
-            10% { transform: translate(-10px, -10px); }
-            30% { transform: translate(10px, 10px); }
-            50% { transform: translate(-10px, 10px); }
-            70% { transform: translate(10px, -10px); }
+            10% { transform: translate(-8px, -5px); }
+            30% { transform: translate(8px, 5px); }
+            50% { transform: translate(-8px, 5px); }
+            70% { transform: translate(8px, -5px); }
             100% { transform: translate(0, 0); }
         }
-       .shake { animation: nudge 0.2s ease-in-out infinite; }
+       .shaking { animation: nudge-shake 0.15s ease-in-out infinite; }
+        
+       .btn-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        button { cursor: pointer; font-weight: bold; }
     </style>
 </head>
-<body id="main-body">
+<body id="bg">
 
 <div class="window" id="nudge-window">
     <div class="title-bar">
-        <div class="title-bar-text">MSN Messenger - (Nudge) $NUDGE</div>
+        <div class="title-bar-text">MSN Messenger - (Nudge received!)</div>
         <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize"></button>
@@ -35,31 +42,42 @@
     </div>
     <div class="window-body">
         <div class="inner-content">
-            <div class="logo-placeholder">
-                <img src="https://i.ibb.co/qMB4qFWs/Nudge.png" alt="$NUDGE" style="width:100%; height:auto;">
+            <div class="logo-box">
+                <img src="https://i.ibb.co/qMB4qFWs/Nudge.png" alt="$NUDGE Logo">
             </div>
-            <p style="font-size: 14px; font-weight: bold;">Remember the sound? $NUDGE is here to wake up the market.</p>
-            <p>The Great Meme Reset of 2026 starts now.</p>
+            <p class="nudge-text">* You have just received a nudge *</p>
+            <p><strong>$NUDGE</strong> is waking up the Solana whales. The Great Meme Reset of 2026 has officially begun. No more brainrot, just pure 2000s energy.</p>
             
-            <div class="field-row" style="justify-content: center; margin-top: 20px;">
-                <button onclick="sendNudge()">SEND NUDGE</button>
-                <button onclick="window.open('https://pump.fun/dein-token-link')">BUY ON PUMP.FUN</button>
+            <div class="btn-container">
+                <button onclick="triggerNudge()">SEND NUDGE</button>
+                <button onclick="window.open('DEIN_PUMP_LINK')">BUY ON PUMP.FUN</button>
             </div>
         </div>
         <div class="status-bar">
-            <p class="status-bar-field">Status: Aggressively Vibrating</p>
-            <p class="status-bar-field">MC Target: 100M</p>
+            <p class="status-bar-field">Status: Online</p>
+            <p class="status-bar-field">Target: 100M MC</p>
+            <p class="status-bar-field">Vibe: Y2K</p>
         </div>
     </div>
 </div>
 
 <script>
-    function sendNudge() {
+    function triggerNudge() {
         const win = document.getElementById('nudge-window');
-        win.classList.add('shake');
-        https://www.zedge.net/notification-sounds/e7cfcb32-c8b3-3e6f-a642-e30e919f7163
-        let audio = new Audio('msn_nudge.mp3'); audio.play();
-        setTimeout(() => { win.classList.remove('shake'); }, 500);
+        const bg = document.getElementById('bg');
+        
+        // Add shaking to window and body for max effect
+        win.classList.add('shaking');
+        
+        // Play the Nudge sound
+        // Ensure you upload 'nudge.mp3' to your GitHub folder
+        let audio = new Audio('nudge.mp3');
+        audio.play().catch(e => console.log("Sound blocked by browser, click page first!"));
+        
+        // Stop shaking after 600ms
+        setTimeout(() => { 
+            win.classList.remove('shaking');
+        }, 600);
     }
 </script>
 
