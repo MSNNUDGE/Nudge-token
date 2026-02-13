@@ -15,11 +15,12 @@
             margin: 0; 
             font-family: "Pixelated MS Sans Serif", Arial, sans-serif; 
             overflow: hidden; 
-            user-select: none; /* Stops highlighting text while spamming nudge */
+            user-select: none;
         }
         
         .window { 
-            width: 380px; 
+            /* Fensterbreite leicht erhöht, damit das große Bild besser passt */
+            width: 420px; 
             box-shadow: 4px 4px 0px #000; 
             position: relative;
             z-index: 10;
@@ -34,8 +35,9 @@
         .logo-box { 
             background: #fff; 
             border: 2px inset #fff; 
-            width: 120px; 
-            height: 120px; 
+            /* GRÖSSE HIER ANGEPASST - Viel größer für den WOW-Effekt */
+            width: 250px; 
+            height: 250px; 
             margin: 0 auto 15px; 
             display: flex; 
             justify-content: center; 
@@ -46,6 +48,7 @@
         .logo-box img { 
             width: 100%; 
             height: auto; 
+            /* Wichtig für den pixeligen Retro-Look */
             image-rendering: pixelated; 
         }
 
@@ -58,7 +61,6 @@
             letter-spacing: 1px; 
         }
         
-        /* The CA Box - Click to Copy */
         .ca-box {
             background: #fff;
             border: 2px inset #dfdfdf;
@@ -66,7 +68,7 @@
             font-size: 11px;
             margin: 15px 0;
             cursor: pointer;
-            user-select: text; /* Allow selection inside CA box */
+            user-select: text;
             font-family: monospace;
         }
 
@@ -75,7 +77,6 @@
             border: 2px inset #000;
         }
 
-        /* The Authentic MSN Nudge Shake Animation */
         @keyframes nudge-shake {
             0% { transform: translate(0, 0); }
             10% { transform: translate(-8px, -8px); }
@@ -119,7 +120,7 @@
     <div class="window-body">
         <div class="inner-content">
             <div class="logo-box">
-                <img src="https://i.ibb.co/qMB4qFWs/Nudge.png" alt="$NUDGE Logo">
+                <img src="https://i.ibb.co/KjqNKxWm/Nudge-whale.png" alt="$NUDGE Deep Fried Meme">
             </div>
             
             <p class="nudge-text">* You have just received a nudge *</p>
@@ -150,20 +151,13 @@
         const win = document.getElementById('nudge-window');
         const audio = document.getElementById('nudgeAudio');
         
-        // Remove class if it exists to allow re-triggering animation
         win.classList.remove('shaking');
-        
-        // Force a reflow (browser repaint) so the animation restarts instantly
         void win.offsetWidth; 
-        
-        // Add class back
         win.classList.add('shaking');
         
-        // Play audio (reset time to 0 to allow rapid spamming)
         audio.currentTime = 0;
         audio.play().catch(e => console.log("Click page first to enable audio."));
         
-        // Stop shake after 350ms
         setTimeout(() => { 
             win.classList.remove('shaking');
         }, 350);
